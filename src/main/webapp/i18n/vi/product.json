@@ -1,0 +1,30 @@
+{
+    "fashionApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Thêm mới một Product",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Product"
+            },
+            "created": "Một Product mới được tạo với định danh {{ param }}",
+            "updated": "Một Product cập nhật với định danh {{ param }}",
+            "deleted": "Một Product đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "name": "Name",
+            "manufacturer": "Manufacturer",
+            "photo": "Photo",
+            "price": "Price",
+            "currentSale": "Current Sale",
+            "fullTextPost": "Full Text Post",
+            "timeCreated": "Time Created",
+            "category": "Category",
+            "morePhoto": "More Photo",
+            "orderProduct": "Order Product"
+        }
+    }
+}

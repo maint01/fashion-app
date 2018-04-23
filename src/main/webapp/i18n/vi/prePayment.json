@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "prePayment" : {
+            "home": {
+                "title": "Pre Payments",
+                "createLabel": "Thêm mới một Pre Payment",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Pre Payment"
+            },
+            "created": "Một Pre Payment mới được tạo với định danh {{ param }}",
+            "updated": "Một Pre Payment cập nhật với định danh {{ param }}",
+            "deleted": "Một Pre Payment đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Pre Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Pre Payment"
+            },
+            "status": "Status",
+            "timePayment": "Time Payment",
+            "bank": "Bank"
+        }
+    }
+}

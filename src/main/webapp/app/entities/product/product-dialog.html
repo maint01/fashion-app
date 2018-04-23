@@ -1,0 +1,143 @@
+<form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProductLabel" data-translate="fashionApp.product.home.createOrEditLabel">Create or
+            edit a Product</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.product.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   ng-model="vm.product.id" readonly/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                   ng-model="vm.product.name"
+                   required/>
+            <div ng-show="form.name.$invalid && form.name.$touched">
+                <p class="help-block"
+                   ng-show="form.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.manufacturer" for="field_manufacturer">Manufacturer</label>
+            <input type="text" class="form-control" name="manufacturer" id="field_manufacturer"
+                   ng-model="vm.product.manufacturer"
+                   required/>
+            <div ng-show="form.manufacturer.$invalid && form.manufacturer.$touched">
+                <p class="help-block"
+                   ng-show="form.manufacturer.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.photo" for="field_photo">Photo</label>
+            <div ng-if="vm.product.photo && vm.product.image.contentType === undefined">
+                <img class="img-responsive" name="photo" id="field_photo" src="{{vm.product.photo}}"/>
+            </div>
+            <div >
+                <div class="col-md-12 row" style="margin: 10px 0px 15px 0px;" ngf-drop
+                     ngf-change="vm.changedPhoto($file)"
+                     ngf-pattern="'image/*'">
+                    <div ng-if="vm.product.image.contentType">
+                        <div style="height: 175px; width: 150px;border: 1px solid #e7f0f7" ngf-change="vm.changedPhoto($file)">
+                            <img
+                                data-ng-src="{{'data:' + vm.product.image.contentType + ';base64,' + vm.product.image.fileData}}"
+                                style="height: 175px; width: 150px" ng-if="vm.product.image.fileData"/>
+                        </div>
+                        <div>
+                            <span>{{vm.product.image.fileName}}</span>
+                        </div>
+                    </div>
+                    <div class="voffset2">
+                        <button type="button" ngf-select class="btn btn-danger"
+                                ngf-change="vm.changedPhoto($file)" accept="image/*"
+                                data-translate="entity.action.edit">
+                            Sửa
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.price" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                   ng-model="vm.product.price"
+                   required/>
+            <div ng-show="form.price.$invalid && form.price.$touched">
+                <p class="help-block"
+                   ng-show="form.price.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="form.price.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.currentSale" for="field_currentSale">Current
+                Sale</label>
+            <input type="number" class="form-control" name="currentSale" id="field_currentSale"
+                   ng-model="vm.product.currentSale"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.quantity" for="filed_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="filed_quantity"
+                   ng-model="vm.product.quantity"
+                   required/>
+            <div ng-show="form.quantity.$invalid && form.quantity.$touched">
+                <p class="help-block"
+                   ng-show="form.quantity.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="form.quantity.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="fashionApp.product.fullTextPost" for="field_fullTextPost">Full
+                Text Post</label>
+            <input type="text" class="form-control" name="fullTextPost" id="field_fullTextPost"
+                   ng-model="vm.product.fullTextPost"
+            />
+        </div>
+        <!--<div class="form-group">-->
+        <!--<label class="control-label" data-translate="fashionApp.product.timeCreated" for="field_timeCreated">Time Created</label>-->
+        <!--<div class="input-group">-->
+        <!--<input id="field_timeCreated" type="text" class="form-control" name="timeCreated" datetime-picker="{{dateformat}}" ng-model="vm.product.timeCreated" is-open="vm.datePickerOpenStatus.timeCreated"-->
+        <!--/>-->
+        <!--<span class="input-group-btn">-->
+        <!--<button type="button" class="btn btn-default" ng-click="vm.openCalendar('timeCreated')"><i class="glyphicon glyphicon-calendar"></i></button>-->
+        <!--</span>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label data-translate="fashionApp.product.category" for="field_category">Category</label>
+            <select class="form-control" id="field_category" name="category" ng-model="vm.product.category"
+                    ng-options="category as category.name for category in vm.categories track by category.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="form.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

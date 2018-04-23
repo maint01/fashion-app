@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "morePhoto" : {
+            "home": {
+                "title": "More Photos",
+                "createLabel": "Create a new More Photo",
+                "createOrEditLabel": "Create or edit a More Photo"
+            },
+            "created": "A new More Photo is created with identifier {{ param }}",
+            "updated": "A More Photo is updated with identifier {{ param }}",
+            "deleted": "A More Photo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete More Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "More Photo"
+            },
+            "url": "Url",
+            "timeCreated": "Time Created",
+            "product": "Product"
+        }
+    }
+}

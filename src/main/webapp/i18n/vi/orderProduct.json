@@ -1,0 +1,25 @@
+{
+    "fashionApp": {
+        "orderProduct" : {
+            "home": {
+                "title": "Order Products",
+                "createLabel": "Thêm mới một Order Product",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Order Product"
+            },
+            "created": "Một Order Product mới được tạo với định danh {{ param }}",
+            "updated": "Một Order Product cập nhật với định danh {{ param }}",
+            "deleted": "Một Order Product đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Order Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Product"
+            },
+            "quantity": "Quantity",
+            "price": "Price",
+            "sale": "Sale",
+            "product": "Product",
+            "orders": "Orders"
+        }
+    }
+}

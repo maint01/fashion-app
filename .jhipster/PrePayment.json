@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "bank",
+            "otherEntityName": "bank",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "timePayment",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180421073552",
+    "entityTableName": "pre_payment",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

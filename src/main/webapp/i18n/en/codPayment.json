@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "codPayment" : {
+            "home": {
+                "title": "Cod Payments",
+                "createLabel": "Create a new Cod Payment",
+                "createOrEditLabel": "Create or edit a Cod Payment"
+            },
+            "created": "A new Cod Payment is created with identifier {{ param }}",
+            "updated": "A Cod Payment is updated with identifier {{ param }}",
+            "deleted": "A Cod Payment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cod Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Cod Payment"
+            },
+            "shipDate": "Ship Date",
+            "status": "Status",
+            "orders": "Orders"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "orders",
+            "otherEntityName": "orders",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "shipDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180421073550",
+    "entityTableName": "cod_payment",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

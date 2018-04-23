@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="fashionApp.customer.detail.title">Customer</span> {{vm.customer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="fashionApp.customer.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{vm.customer.fullName}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.customer.address">Address</span></dt>
+        <dd>
+            <span>{{vm.customer.address}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.customer.email">Email</span></dt>
+        <dd>
+            <span>{{vm.customer.email}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.customer.phone">Phone</span></dt>
+        <dd>
+            <span>{{vm.customer.phone}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.customer.customerType">Customer Type</span></dt>
+        <dd>
+            <span>{{vm.customer.customerType}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="customer-detail.edit({id:vm.customer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

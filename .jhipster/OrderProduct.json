@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "orders",
+            "otherEntityName": "orders",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "sale",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180421073554",
+    "entityTableName": "order_product",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

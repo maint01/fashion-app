@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "prePayment",
+            "otherEntityName": "prePayment",
+            "otherEntityRelationshipName": "bank"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180421073551",
+    "entityTableName": "bank",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

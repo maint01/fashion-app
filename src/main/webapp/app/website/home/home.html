@@ -1,0 +1,65 @@
+<div ng-cloak>
+    <div>
+        <div class="container">
+            <form name="form">
+                <div class="form-group row">
+                    <label class="control-label text-normal col-sm-2" for="name"
+                           data-translate="site.home.productName">Tên sản phẩm</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" ng-model="vm.name"
+                               id="name" ng-minlength=1 ng-maxlength=50
+                               placeholder="{{site.home.searchPlaceholder|translate}}" name="name" required>
+                        <div ng-show="(form.name.$touched || form.name.$dirty) && form.name.$invalid">
+                            <p class="text-danger" ng-show="form.name.$error.maxlength"
+                               data-translate="site.home.maxlengthSearchProduct">
+                                Tên sản không được quá 50 ký tự.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-sm btn-link btn-border"
+                                ng-disabled="form.$invalid"
+                                ng-click="vm.searchProducts()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-if="vm.lstProduct.length === 0 && vm.isFinded">
+        <div class="container">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            &nbsp;
+            <span data-translate="site.home.productNotFound">Không tìm thấy sản phẩm nào. Bạn hãy vui lòng tìm kiếm với tên khác.</span>
+        </div>
+    </div>
+    <div ng-if="vm.lstProduct.length > 0">
+        <div class="text-center title-category">
+            <h4 data-translate="site.home.allProduct">Tất cả sản phẩm</h4>
+        </div>
+        <div class="container">
+            <div ng-repeat="product in vm.lstProduct track by $index">
+                <div style="padding: 15px;" class="col-md-3 col-sm-4 col-xs-6">
+                    <div
+                        style="border: 1px solid #985f0d; border-radius: 5px; margin: 10px 15px; padding: 9px 15px 10px 15px">
+                        <img class="img-responsive img-home-product" src="{{product.photo}}"/>
+                        <div>
+                            <p>{{product.name}}</p>
+                            <p>{{product.manufacturer}}</p>
+                            <p>{{product.price | money}}</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-default" ui-sref="detail({id:product.id})">
+                                <span data-translate="site.home.viewMore">View more</span>
+                            </button>
+                            <button class="btn btn-sm btn-danger pull-right" ng-click="vm.addToCart(product)">
+                                <i class="glyphicon glyphicon-shopping-cart"></i><span data-translate="site.common.buyNow">Buy now</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+<div class="container">
+    <div class="basic-info">
+        <span data-translate="site.cart.shoppingInfo">Thông tin mua hàng</span>
+    </div>
+    <div ng-if="vm.cart===undefined || vm.cart.lstProduct === undefined || vm.cart.lstProduct.length === 0">
+        <i class="icon_cart_empty"></i><span data-translate="site.common.cartEmpty">Không còn sản phẩm nào trong giỏ hàng của bạn</span>
+    </div>
+    <div>
+        <form name="form">
+            <div class="col-md-6">
+                <div class="pad">
+
+                    <div class="form-group row">
+                        <label class="control-label text-normal col-sm-4" for="name"data-translate="site.cart.name">Tên</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" ng-model="vm.cart.customer.fullName" id="name"
+                                   placeholder="Họ và tên" name="name" ng-maxlength=100 required>
+                            <div ng-show="form.name.$touched && form.name.$invalid">
+                                <p class="text-danger" ng-show="form.name.$error.required" data-translate="site.cart.nameRequired">Họ tên không được để trống.</p>
+                                <p class="text-danger" ng-show="form.name.$error.maxlength" data-translate="site.cart.nameMaxLength">Họ tên của bạn không được quá 100 ký tự.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label text-normal col-sm-4" for="email">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" ng-model="vm.cart.customer.email"
+                                   id="email" ng-minlength=5 ng-maxlength=100
+                                   placeholder="Xin vui lòng nhập email" name="email" required>
+                            <div ng-show="(form.email.$touched || form.email.$dirty) && form.email.$invalid">
+                                <p class="text-danger" ng-show="form.email.$error.required" data-translate="site.cart.emailRequired">
+                                    Email không được để trống.
+                                </p>
+                                <p class="text-danger" ng-show="form.email.$error.email" data-translate="site.cart.emailErrorFormat">
+                                    Email không chính xác.
+                                </p>
+                                <p class="text-danger" ng-show="form.email.$error.minlength" data-translate="site.cart.emailMinLength">
+                                    Email phải chứa ít nhất 5 ký tự.
+                                </p>
+                                <p class="text-danger" ng-show="form.email.$error.maxlength" data-translate="site.cart.emailMaxLength">
+                                    Email của bạn không được quá 100 ký tự.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label text-normal col-sm-4" for="address">Địa chỉ</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control resize-none" ng-model="vm.cart.customer.address"
+                                      id="address" ng-minlength=5 ng-maxlength=255 rows="2"
+                                      placeholder="Địa chỉ nhận hàng" name="address" required>
+                            </textarea>
+                            <div ng-show="(form.address.$touched || form.address.$dirty) && form.address.$invalid">
+                                <p class="text-danger"
+                                   ng-show="form.address.$error.required">
+                                    Địa chỉ không được để trống.
+                                </p>
+                                <p class="text-danger"
+                                   ng-show="form.address.$error.minlength">
+                                    Địa chỉ phải chứa ít nhất 5 ký tự.
+                                </p>
+                                <p class="text-danger"
+                                   ng-show="form.address.$error.maxlength">
+                                    Email của bạn không được quá 255 ký tự.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label text-normal col-sm-4" for="phone">Điện thoại di động</label>
+                        <div class="col-sm-8">
+                            <input type="tel" class="form-control" ng-pattern="/^[0-9]{10,11}$/"
+                                   ng-model="vm.cart.customer.phone" id="phone"
+                                   placeholder="Số điện thoại" name="phone" required>
+                            <div ng-show="(form.phone.$touched || form.phone.$dirty) && form.phone.$invalid">
+                                <p class="text-danger" ng-show="form.phone.$error.required">
+                                    Số điện thoại không được để trống.
+                                </p>
+                                <p class="text-danger" ng-show="form.phone.$error.pattern">
+                                    Số điện thoại không chính xác.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 10px">
+                    <div>
+                        <input type="radio" checked="true" disabled/>
+                        <span data-translate="site.cart.postPaid">Thanh toán khi nhận hàng</span>
+                    </div>
+                    <div>
+                        <span style="color: #a09a9a" data-translate="site.cart.noteTransfer">(*)Lưu ý thời gian giao hàng phụ thuộc vào thời gian Gian hàng xử lý đơn, có thể chậm hơn thông
+                        báo tối đa 24h.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 table-responsive" style="padding-right: 5px" ng-if="vm.cart.lstProduct.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                    <th data-translate="site.common.product">Sản phẩm</th>
+                    <th data-translate="site.common.name">Tên</th>
+                    <th data-translate="site.common.price">Giá</th>
+                    <th data-translate="site.common.quantity">Số lượng</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="product in vm.cart.lstProduct track by $index">
+                        <td class="ver-center">
+                            <div style=" padding: 10px 0;">
+                                <img src="{{product.photo}}" class="img-responsive img-delivery"/>
+                            </div>
+                        </td>
+                        <td class="ver-center">
+                            <span ng-class="{'text-line-through': detail.product.valid}">{{product.name}}</span>
+                        </td>
+                        <td class="ver-center">
+                            <span>{{product.price | money}}</span>
+                        </td>
+                        <td class="ver-center">
+                            <div class="row col-md-5">
+                                <span>{{vm.cart.lstQuantity[$index]}}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hidden-xs">
+                        <td colspan="4" class="no-border">
+                            <span class="order-info" data-translate="site.common.orderInfo">Thông tin đơn hàng</span>
+                        </td>
+                    </tr>
+                    <tr class="hidden-xs">
+                        <td colspan="2">
+                            <span data-translate="site.cart.totalAmount">Tổng số tiền</span>
+                        </td>
+                        <td colspan="2" class="text-price-product">
+                            <span class="pull-right">{{vm.cart.totalPrice | money}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pad">
+                <div class="text-center">
+                    <button ng-click="vm.saveCart()" ng-disabled="form.$invalid"
+                            class="btn btn-sm btn-success pull-right">
+                        <span data-translate="site.common.order">Đặt hàng</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

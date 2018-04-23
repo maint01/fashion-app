@@ -1,0 +1,72 @@
+entity Category {
+	name String required,
+    note String,
+    categoryLevel Integer required
+}
+
+entity MorePhoto{
+	url String required,
+    timeCreated ZonedDateTime
+}
+
+entity Product {
+	name String required,
+    manufacturer String required,
+    photo String,
+    price Float required,
+    currentSale Float,
+    fullTextPost String,
+    timeCreated ZonedDateTime
+}
+
+entity Customer {
+	fullName String required,
+	address String required,
+	email String,
+	phone String,
+	customerType String
+}
+
+entity CodPayment {
+	shipDate LocalDate,
+	status Integer
+}
+
+entity Bank {
+	name String,
+	code String,
+	description String
+}
+
+entity PrePayment {
+	status Integer,
+	timePayment ZonedDateTime
+}
+
+entity Orders {
+	timeCreated ZonedDateTime,
+	status Integer,
+	payCategory Integer
+}
+
+entity OrderProduct {
+	quantity Integer,
+	price Float,
+	sale Float
+}
+
+relationship OneToMany{
+	Category {parent} to Category,
+	Category {products} to Product,
+	Product {morePhoto} to MorePhoto,
+	Customer {orders} to Orders,
+	Orders {codPayment} to CodPayment,
+	Bank {prePayment} to PrePayment,
+	Orders {orderProduct} to OrderProduct,
+	Product {orderProduct} to OrderProduct
+
+}
+
+paginate * with pagination
+
+service all with serviceImpl

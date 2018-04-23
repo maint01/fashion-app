@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "codPayment",
+            "otherEntityName": "codPayment",
+            "otherEntityRelationshipName": "orders"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderProduct",
+            "otherEntityName": "orderProduct",
+            "otherEntityRelationshipName": "orders"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "timeCreated",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "payCategory",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180421073553",
+    "entityTableName": "orders",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

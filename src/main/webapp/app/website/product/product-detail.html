@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="container-fluid">
+        <img class="img-responsive img-home-product col-sm-3" src="{{vm.product.photo}}"/>
+        <div class="col-sm-9">
+            <p>{{vm.product.name}}</p>
+            <p>{{vm.product.manufacturer}}</p>
+            <p class="old-sale" ng-if="vm.product.price !== vm.product.currentSale">{{vm.product.price | money}}</p>
+            <p>{{vm.product.currentSale | money}}</p>
+            <p>{{vm.product.fullTextPost}}</p>
+        </div>
+    </div>
+
+    <div class="pad margin-left-15 voffset3">
+        <button class="btn btn-sm btn-success" ng-click="vm.addToCart(vm.product)">
+            <span data-translate="site.common.buyNow">Buy now</span>
+        </button>
+        <button class="btn btn-sm btn-danger" ui-sref="home">
+            <span data-translate="site.common.continueShopping">Continue shopping</span>
+        </button>
+    </div>
+</div>

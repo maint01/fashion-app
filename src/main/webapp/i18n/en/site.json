@@ -1,0 +1,42 @@
+{
+    "site": {
+        "common": {
+            "search": "Tìm kiếm",
+            "buyNow": "Mua ngay",
+            "continueShopping": "Tiếp tục mua hàng",
+            "order": "Đặt hàng",
+            "delete": "Xóa"
+        },
+        "home": {
+            "productNotFound": "Không tìm thấy sản phẩm nào. Bạn hãy vui lòng tìm kiếm với tên khác.",
+            "allProduct": "Tất cả sản phẩm",
+            "viewMore": "Xem chi tiết",
+            "productName": "Tên sản phẩm",
+            "searchPlaceholder": "Xin vui lòng nhập tên sản phẩm",
+            "maxlengthSearchProduct": "Tên sản không được quá 50 ký tự."
+        },
+        "detail": {
+        },
+        "cart": {
+            "cart": "Giỏ hàng",
+            "totalAmount": "Tổng số tiền",
+            "orderInfo": "Thông tin đơn hàng",
+            "shoppingInfo": "Thông tin mua hàng",
+            "cartEmpty": "Không còn sản phẩm nào trong giỏ hàng của bạn",
+            "product":"Sản phẩm",
+            "name":"Tên",
+            "price":"Giá",
+            "quantity":"Số lượng",
+            "postPaid": "Thanh toán khi nhận hàng",
+            "noteTransfer": "(*)Lưu ý thời gian giao hàng phụ thuộc vào thời gian Gian hàng xử lý đơn, có thể chậm hơn thông báo tối đa 24h.",
+            "emailRequired":"Email không được để trống.",
+            "emailErrorFormat":"Email không chính xác.",
+            "emailMinLength":"Email phải chứa ít nhất 5 ký tự.",
+            "emailMaxLength":"Email của bạn không được quá 100 ký tự.",
+            "nameRequired":"Họ tên không được để trống.",
+            "nameMaxLength":"Họ tên không được quá 100 ký tự.",
+            "":""
+        },
+        "delivery": {}
+    }
+}

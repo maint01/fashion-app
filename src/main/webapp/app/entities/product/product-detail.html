@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span data-translate="fashionApp.product.detail.title">Product</span> {{vm.product.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="fashionApp.product.name">Name</span></dt>
+        <dd>
+            <span>{{vm.product.name}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.manufacturer">Manufacturer</span></dt>
+        <dd>
+            <span>{{vm.product.manufacturer}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.photo">Photo</span></dt>
+        <dd>
+            <span>{{vm.product.photo}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.price">Price</span></dt>
+        <dd>
+            <span>{{vm.product.price}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.currentSale">Current Sale</span></dt>
+        <dd>
+            <span>{{vm.product.currentSale}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.product.quantity}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.fullTextPost">Full Text Post</span></dt>
+        <dd>
+            <span>{{vm.product.fullTextPost}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.timeCreated">Time Created</span></dt>
+        <dd>
+            <span>{{vm.product.timeCreated | date:'dd/MM/yyyy hh:mm:ss'}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.product.category">Category</span></dt>
+        <dd>
+            <a ui-sref="category-detail({id:vm.product.category.id})">{{vm.product.category.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="product-detail.edit({id:vm.product.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

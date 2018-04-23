@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="basic-info">
+        <span data-translate="site.common.cart">Giỏ hàng</span>
+    </div>
+    <div ng-if="vm.cart===undefined || vm.cart.lstProduct === undefined || vm.cart.lstProduct.length === 0">
+        <i class="icon_cart_empty"></i><span data-translate="site.common.cartEmpty">Không còn sản phẩm nào trong giỏ hàng của bạn</span>
+    </div>
+    <div class="table-responsive" style="padding-right: 5px" ng-if="vm.cart.lstProduct.length > 0">
+        <table class="table table-hover">
+            <thead>
+            <th data-translate="site.common.product">Sản phẩm</th>
+            <th data-translate="site.common.name">Tên</th>
+            <th data-translate="site.common.price">Giá</th>
+            <th data-translate="site.common.quantity">Số lượng</th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="product in vm.cart.lstProduct track by $index">
+                <td class="ver-center">
+                    <div style=" padding: 10px 0;">
+                        <img src="{{product.photo}}" class="img-responsive img-cart"/>
+                    </div>
+                </td>
+                <td class="ver-center">
+                        <span ng-class="{'text-line-through': detail.product.valid}">{{product.name}}</span>
+                </td>
+                <td class="ver-center">
+                        <span>{{product.price | money}}</span>
+                </td>
+                <td class="ver-center">
+                    <div class="row col-md-5">
+                        <input type="text" ng-model="vm.cart.lstQuantity[$index]"
+                               class="form-control text-center"
+                               maxlength="3" value="0" ng-change="vm.changedQuantity()">
+                    </div>
+                </td>
+                <td class="ver-center">
+                    <button class="btn btn-sm btn-danger" ng-click="vm.remove($index)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span data-translate="site.common.delete">Xóa</span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="hidden-xs">
+                <td colspan="5" class="no-border">
+                    <span class="order-info" data-translate="site.common.orderInfo">Thông tin đơn hàng</span>
+                </td>
+            </tr>
+            <tr class="hidden-xs">
+                <td colspan="2">
+                    <span data-translate="site.cart.totalAmount">Tổng số tiền</span>
+                </td>
+                <td colspan="3" class="text-price-product">
+                    <span class="pull-right">{{vm.cart.totalPrice | money}}</span>
+                </td>
+            </tr>
+            <tr class="hidden-xs">
+                <td colspan="5">
+                    <button ui-sref="delivery"
+                            class="btn btn-sm btn-danger pull-right">
+                        <span data-translate="site.common.order">Đặt hàng</span>
+                    </button>
+                    <button ui-sref="home"
+                            class="btn btn-sm btn-success pull-right margin-right-15">
+                        <span data-translate="site.common.continueShopping">Tiếp tục mua hàng</span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

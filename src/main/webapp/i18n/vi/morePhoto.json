@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "morePhoto" : {
+            "home": {
+                "title": "More Photos",
+                "createLabel": "Thêm mới một More Photo",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật More Photo"
+            },
+            "created": "Một More Photo mới được tạo với định danh {{ param }}",
+            "updated": "Một More Photo cập nhật với định danh {{ param }}",
+            "deleted": "Một More Photo đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa More Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "More Photo"
+            },
+            "url": "Url",
+            "timeCreated": "Time Created",
+            "product": "Product"
+        }
+    }
+}

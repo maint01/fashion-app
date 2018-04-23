@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "codPayment" : {
+            "home": {
+                "title": "Cod Payments",
+                "createLabel": "Thêm mới một Cod Payment",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Cod Payment"
+            },
+            "created": "Một Cod Payment mới được tạo với định danh {{ param }}",
+            "updated": "Một Cod Payment cập nhật với định danh {{ param }}",
+            "deleted": "Một Cod Payment đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Cod Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Cod Payment"
+            },
+            "shipDate": "Ship Date",
+            "status": "Status",
+            "orders": "Orders"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "fashionApp": {
+        "customer" : {
+            "home": {
+                "title": "Customers",
+                "createLabel": "Thêm mới một Customer",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Customer"
+            },
+            "created": "Một Customer mới được tạo với định danh {{ param }}",
+            "updated": "Một Customer cập nhật với định danh {{ param }}",
+            "deleted": "Một Customer đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer"
+            },
+            "fullName": "Full Name",
+            "address": "Address",
+            "email": "Email",
+            "phone": "Phone",
+            "customerType": "Customer Type",
+            "orders": "Orders"
+        }
+    }
+}

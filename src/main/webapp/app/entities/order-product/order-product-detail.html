@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="fashionApp.orderProduct.detail.title">Order Product</span> {{vm.orderProduct.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="fashionApp.orderProduct.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.orderProduct.quantity}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.orderProduct.price">Price</span></dt>
+        <dd>
+            <span>{{vm.orderProduct.price}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.orderProduct.sale">Sale</span></dt>
+        <dd>
+            <span>{{vm.orderProduct.sale}}</span>
+        </dd>
+        <dt><span data-translate="fashionApp.orderProduct.product">Product</span></dt>
+        <dd>
+            <a ui-sref="product-detail({id:vm.orderProduct.product.id})">{{vm.orderProduct.product.id}}</a>
+        </dd>
+        <dt><span data-translate="fashionApp.orderProduct.orders">Orders</span></dt>
+        <dd>
+            <a ui-sref="orders-detail({id:vm.orderProduct.orders.id})">{{vm.orderProduct.orders.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="order-product-detail.edit({id:vm.orderProduct.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

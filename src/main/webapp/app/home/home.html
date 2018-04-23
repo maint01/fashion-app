@@ -1,0 +1,21 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="content/images/logo-fashion.png" class="img-responsive"/>
+        </div>
+        <div class="col-md-8">
+            <h1 data-translate="home.title">Welcome, Admin page!</h1>
+            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
+                    Please login <a class="alert-link" href="" ng-click="vm.login()">sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

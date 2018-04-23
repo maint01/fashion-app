@@ -1,0 +1,24 @@
+{
+    "fashionApp": {
+        "bank" : {
+            "home": {
+                "title": "Banks",
+                "createLabel": "Thêm mới một Bank",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Bank"
+            },
+            "created": "Một Bank mới được tạo với định danh {{ param }}",
+            "updated": "Một Bank cập nhật với định danh {{ param }}",
+            "deleted": "Một Bank đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Bank {{ id }}?"
+            },
+            "detail": {
+                "title": "Bank"
+            },
+            "name": "Name",
+            "code": "Code",
+            "description": "Description",
+            "prePayment": "Pre Payment"
+        }
+    }
+}

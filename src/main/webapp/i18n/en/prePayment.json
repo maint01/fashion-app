@@ -1,0 +1,23 @@
+{
+    "fashionApp": {
+        "prePayment" : {
+            "home": {
+                "title": "Pre Payments",
+                "createLabel": "Create a new Pre Payment",
+                "createOrEditLabel": "Create or edit a Pre Payment"
+            },
+            "created": "A new Pre Payment is created with identifier {{ param }}",
+            "updated": "A Pre Payment is updated with identifier {{ param }}",
+            "deleted": "A Pre Payment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pre Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Pre Payment"
+            },
+            "status": "Status",
+            "timePayment": "Time Payment",
+            "bank": "Bank"
+        }
+    }
+}
