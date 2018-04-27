@@ -5,7 +5,8 @@
             "buyNow": "Mua ngay",
             "continueShopping": "Tiếp tục mua hàng",
             "order": "Đặt hàng",
-            "delete": "Xóa"
+            "delete": "Xóa",
+            "cart": "Giỏ hàng"
         },
         "home": {
             "productNotFound": "Không tìm thấy sản phẩm nào. Bạn hãy vui lòng tìm kiếm với tên khác.",

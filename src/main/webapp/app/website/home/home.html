@@ -8,7 +8,7 @@
                     <div class="col-sm-7">
                         <input type="text" class="form-control" ng-model="vm.name"
                                id="name" ng-minlength=1 ng-maxlength=50
-                               placeholder="{{site.home.searchPlaceholder|translate}}" name="name" required>
+                               placeholder="{{site.home.searchPlaceholder|translate}}" name="name">
                         <div ng-show="(form.name.$touched || form.name.$dirty) && form.name.$invalid">
                             <p class="text-danger" ng-show="form.name.$error.maxlength"
                                data-translate="site.home.maxlengthSearchProduct">
@@ -54,7 +54,7 @@
                                 <span data-translate="site.home.viewMore">View more</span>
                             </button>
                             <button class="btn btn-sm btn-danger pull-right" ng-click="vm.addToCart(product)">
-                                <i class="glyphicon glyphicon-shopping-cart"></i><span data-translate="site.common.buyNow">Buy now</span>
+                                <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span data-translate="site.common.buyNow">Buy now</span>
                             </button>
                         </div>
                     </div>

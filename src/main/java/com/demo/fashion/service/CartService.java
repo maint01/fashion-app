@@ -7,5 +7,5 @@ import com.demo.fashion.web.rest.vm.CartVM;
  *         Created on 4/22/2018
  */
 public interface CartService {
-    boolean saveCart(CartVM cartVM);
+    Long saveCart(CartVM cartVM);
 }

@@ -93,6 +93,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public OrdersDTO searchOrder(String codeOrder) {
         log.debug("Request to search Orders : {}", codeOrder);
         if (StringUtils.isNumeric(codeOrder)) {

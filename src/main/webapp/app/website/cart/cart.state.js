@@ -27,6 +27,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('global');
                     $translatePartialLoader.addPart('site');
+                    return $translate.refresh();
                 }]
             }
         }).state('search-order', {
@@ -49,6 +50,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('global');
                     $translatePartialLoader.addPart('site');
+                    return $translate.refresh();
                 }]
             }
         }).state('delivery', {
@@ -71,6 +73,30 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('global');
                     $translatePartialLoader.addPart('site');
+                    return $translate.refresh();
+                }]
+            }
+        }).state('order-success', {
+            parent: 'home',
+            url: 'order-success/{codeOrder}',
+            views: {
+                'content@': {
+                    templateUrl: 'app/website/cart/order-success.html',
+                    controller: 'OrderSuccessController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                lazyLoad: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'app/website/cart/order-success.controller.js',
+                        'app/website/cart/cart.service.js'
+                    ]);
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('site');
+                    return $translate.refresh();
                 }]
             }
         });

@@ -120,6 +120,11 @@
         }
     },
     "error": {
+        "error": "Error",
+        "warning": "Warning",
+        "httpError": "Access denies",
+        "systemIntermittent": "Hệ thống tạm thời gián đoạn!",
+        "systemError": "Hệ thống đang gặp lỗi. Vui lòng liên hệ quản trị viên!",
         "internalServerError": "Internal server error",
         "server.not.reachable": "Server not reachable",
         "url.not.found": "Not found",

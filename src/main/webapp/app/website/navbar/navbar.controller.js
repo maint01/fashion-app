@@ -5,9 +5,9 @@
         .module('fashionApp')
         .controller('NavbarSiteController', NavbarSiteController);
 
-    NavbarSiteController.$inject = ['$state'];
+    NavbarSiteController.$inject = ['$scope', '$state', 'toastr'];
 
-    function NavbarSiteController ($state) {
+    function NavbarSiteController ($scope, $state, toastr) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -42,5 +42,20 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
+
+        $scope.$on('fashionApp.httpError', function(){
+           toastr.warning($translate.instant('error.httpError'), $translate.instant('error.warning'));
+           $state.go('home');
+        });
+
+        $scope.$on('fashionApp.systemIntermittent', function(){
+            toastr.warning($translate.instant('error.systemIntermittent'), $translate.instant('error.warning'));
+            $state.go('home');
+        });
+
+        $scope.$on('fashionApp.systemError', function(){
+            toastr.error($translate.instant('error.systemError'), $translate.instant('error.error'));
+            $state.go('home');
+        });
     }
 })();

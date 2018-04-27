@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author bietdoicamtu.
  *         Created on 4/22/2018
@@ -31,9 +34,11 @@ public class CartResource {
     public ResponseEntity<Object> saveCart(@RequestBody CartVM cartVM) {
         log.info("REST request to save cart: {}", cartVM);
         try {
-            boolean isSaveSuccess = cartService.saveCart(cartVM);
-            if(isSaveSuccess){
-                return new ResponseEntity<>(HttpStatus.OK);
+            Long codeOrder = cartService.saveCart(cartVM);
+            if(codeOrder != null){
+                Map<String, Object> maps = new HashMap<>();
+                maps.put("codeOrder", codeOrder);
+                return new ResponseEntity<>(maps, HttpStatus.OK);
             }else{
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

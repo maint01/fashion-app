@@ -47,7 +47,7 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
-    public boolean saveCart(CartVM cartVM) {
+    public Long saveCart(CartVM cartVM) {
         log.info("Request to save cart.");
         //save customer
         Customer customer = cartVM.getCustomer();
@@ -85,7 +85,7 @@ public class CartServiceImpl implements CartService {
         //update quantity for product
         lstProduct = productRepository.save(lstProduct);
 
-        return !lstProduct.isEmpty();
+        return orders.getId();
     }
 
 

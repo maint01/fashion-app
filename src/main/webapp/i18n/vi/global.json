@@ -120,6 +120,11 @@
         }
     },
     "error": {
+        "error": "Lỗi",
+        "warning": "Cảnh báo",
+        "httpError": "Bạn không có quyền truy cập tính năng này!",
+        "systemIntermittent": "Hệ thống tạm thời gián đoạn!",
+        "systemError": "Hệ thống đang gặp lỗi. Vui lòng liên hệ quản trị viên!",
         "internalServerError": "Lỗi máy chủ nội bộ",
         "server.not.reachable": "Không tìm thấy máy chủ",
         "url.not.found": "Không tìm thấy",
