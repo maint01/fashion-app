@@ -20,6 +20,7 @@
             "photo": "Photo",
             "price": "Price",
             "currentSale": "Current Sale",
+            "quantity": "Quantity",
             "fullTextPost": "Full Text Post",
             "timeCreated": "Time Created",
             "category": "Category",

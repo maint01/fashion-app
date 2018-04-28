@@ -69,7 +69,7 @@ public class Product implements Serializable {
         return id;
     }
 
-    public Product id(Long name) {
+    public Product id(Long id) {
         this.id = id;
         return this;
     }

@@ -40,6 +40,14 @@
         },
         "delivery": {
             "success": "Đặt hàng thành công. Cảm ơn quí khác đã tham gia mua hàng tại website!"
+        },
+        "order": {
+            "status": {
+                "new": "Chờ xử lý",
+                "cancel": "Đã hủy",
+                "delivery": "Đang vận chuyển",
+                "closed": "Đã đóng"
+            }
         }
     }
 }

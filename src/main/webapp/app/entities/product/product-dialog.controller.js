@@ -53,16 +53,16 @@
         }
 
         function changedPhoto(file) {
-            if (file && file.$error === 'pattern') {
+            if (file === null && file.$error === 'pattern') {
                 return;
             }
             vm.product.image.fileName = file.name;
             if (file) {
                 DataUtils.toBase64(file, function (base64Data) {
-                    // $scope.$apply(function () {
-                    vm.product.image.fileData = base64Data;
-                    vm.product.image.contentType = file.type;
-                    // });
+                    $scope.$apply(function () {
+                        vm.product.image.fileData = base64Data;
+                        vm.product.image.contentType = file.type;
+                    });
                 });
             }
         }

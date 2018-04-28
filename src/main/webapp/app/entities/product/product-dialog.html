@@ -39,14 +39,13 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="fashionApp.product.photo" for="field_photo">Photo</label>
-            <div ng-if="vm.product.photo && vm.product.image.contentType === undefined">
+            <div ng-if="vm.product.photo && vm.product.image.fileName === undefined">
                 <img class="img-responsive" name="photo" id="field_photo" src="{{vm.product.photo}}"/>
             </div>
             <div >
                 <div class="col-md-12 row" style="margin: 10px 0px 15px 0px;" ngf-drop
-                     ngf-change="vm.changedPhoto($file)"
                      ngf-pattern="'image/*'">
-                    <div ng-if="vm.product.image.contentType">
+                    <div ng-if="vm.product.image.fileName || vm.product.photo === null">
                         <div style="height: 175px; width: 150px;border: 1px solid #e7f0f7" ngf-change="vm.changedPhoto($file)">
                             <img
                                 data-ng-src="{{'data:' + vm.product.image.contentType + ';base64,' + vm.product.image.fileData}}"
@@ -108,9 +107,8 @@
         <div class="form-group">
             <label class="control-label" data-translate="fashionApp.product.fullTextPost" for="field_fullTextPost">Full
                 Text Post</label>
-            <input type="text" class="form-control" name="fullTextPost" id="field_fullTextPost"
-                   ng-model="vm.product.fullTextPost"
-            />
+            <textarea class="form-control" name="fullTextPost" id="field_fullTextPost"
+                   ng-model="vm.product.fullTextPost" rows="3"></textarea>
         </div>
         <!--<div class="form-group">-->
         <!--<label class="control-label" data-translate="fashionApp.product.timeCreated" for="field_timeCreated">Time Created</label>-->

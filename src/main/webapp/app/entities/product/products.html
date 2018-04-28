@@ -17,14 +17,14 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <tr jh-sort="vm.predicate" class="no-wrap-text" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="fashionApp.product.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="manufacturer"><span data-translate="fashionApp.product.manufacturer">Manufacturer</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="photo"><span data-translate="fashionApp.product.photo">Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="price"><span data-translate="fashionApp.product.price">Price</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="price"><span data-translate="fashionApp.product.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="currentSale"><span data-translate="fashionApp.product.currentSale">Current Sale</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="price"><span data-translate="fashionApp.product.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fullTextPost"><span data-translate="fashionApp.product.fullTextPost">Full Text Post</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="timeCreated"><span data-translate="fashionApp.product.timeCreated">Time Created</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="category.id"><span data-translate="fashionApp.product.category">Category</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -36,14 +36,15 @@
                     <td><a ui-sref="product-detail({id:product.id})">{{product.id}}</a></td>
                     <td>{{product.name}}</td>
                     <td>{{product.manufacturer}}</td>
-                    <td>{{product.photo}}</td>
-                    <td>{{product.price}}</td>
+                    <td>
+                        <img class="img-responsive img-delivery" src="{{product.photo}}" alt="image"/></td>
+                    <td>{{product.price|money}}</td>
+                    <td>{{product.currentSale|money}}</td>
                     <td>{{product.quantity}}</td>
-                    <td>{{product.currentSale}}</td>
                     <td>{{product.fullTextPost}}</td>
                     <td>{{product.timeCreated | date:'medium'}}</td>
                     <td>
-                        <a ui-sref="category-detail({id:product.category.id})">{{product.category.id}}</a>
+                        <a ui-sref="category-detail({id:product.category.id})">{{product.category.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -397,6 +397,7 @@ ui bootstrap tweaks
     left: 10%;
     border-bottom: 1px solid red;
 }
+
 .title-category h5 {
     /*font-weight: 300;*/
     font-family: Arial;
@@ -415,25 +416,25 @@ ui bootstrap tweaks
     border-bottom: 1px solid red;
 }
 
-.img-cart{
+.img-cart {
     width: 97px;
     height: 127px;
 }
 
-.img-delivery{
+.img-delivery {
     width: 47px;
     height: 67px;
 }
 
-.ver-center{
+.ver-center {
     vertical-align: middle !important;
 }
 
-.margin-left-15{
+.margin-left-15 {
     margin-left: 15px !important;
 }
 
-.margin-right-15{
+.margin-right-15 {
     margin-right: 15px !important;
 }
 
@@ -447,9 +448,15 @@ ui bootstrap tweaks
     color: rgba(63, 63, 63, 255);
     margin-bottom: 10px;
 }
-.btn-border{
+
+.btn-border {
     border: 1px solid seagreen;
 }
-.old-sale{
+
+.old-sale {
     text-decoration: line-through;
+}
+
+tr.no-wrap-text > th {
+    white-space: nowrap;
 }
