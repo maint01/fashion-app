@@ -138,6 +138,19 @@ public class ProductServiceImpl implements ProductService{
      * @return entity
      */
     private Product toEntity(ProductVM productVM, User user){
+        if(productVM.getId() != null){
+            Product product = productRepository.findOne(productVM.getId());
+            product
+                .name(productVM.getName())
+                .photo(productVM.getPhoto())
+                .manufacturer(productVM.getManufacturer())
+                .quantity(productVM.getQuantity())
+                .price(productVM.getPrice())
+                .currentSale(productVM.getCurrentSale())
+                .fullTextPost(productVM.getFullTextPost())
+                .category(productVM.getCategory());
+            return product;
+        }
         return new Product()
             .id(productVM.getId())
             .name(productVM.getName())

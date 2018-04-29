@@ -30,7 +30,7 @@
                 <tr ng-repeat="orders in vm.orders track by orders.id">
                     <td><a ui-sref="orders-detail({id:orders.id})">{{orders.id}}</a></td>
                     <td>{{orders.timeCreated | date:'medium'}}</td>
-                    <td>{{orders.status}}</td>
+                    <td>{{orders.status|statusOrder}}</td>
                     <td>{{orders.payCategory}}</td>
                     <td>
                         <a ui-sref="customer-detail({id:orders.customer.id})">{{orders.customer.id}}</a>
