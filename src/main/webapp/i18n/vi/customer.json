@@ -2,7 +2,7 @@
     "fashionApp": {
         "customer" : {
             "home": {
-                "title": "Customers",
+                "title": "Khách hàng",
                 "createLabel": "Thêm mới một Customer",
                 "createOrEditLabel": "Thêm mới hoặc cập nhật Customer"
             },
@@ -15,11 +15,11 @@
             "detail": {
                 "title": "Customer"
             },
-            "fullName": "Full Name",
-            "address": "Address",
+            "fullName": "Họ tên",
+            "address": "Địa chỉ",
             "email": "Email",
-            "phone": "Phone",
-            "customerType": "Customer Type",
+            "phone": "Số điện thoại",
+            "customerType": "Loại khách hàng",
             "orders": "Orders"
         }
     }

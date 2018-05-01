@@ -5,14 +5,15 @@
         .module('fashionApp')
         .controller('BaseController', BaseController);
 
-    BaseController.$inject = ['$state', 'BaseService', '$localStorage'];
+    BaseController.$inject = ['$state', 'BaseService', '$localStorage', '$sessionStorage'];
 
-    function BaseController($state, BaseService, $localStorage) {
+    function BaseController($state, BaseService, $localStorage, $sessionStorage) {
         var vm = this;
 
         vm.addToCart = addToCart;
         vm.indexOfCart = indexOfCart;
         vm.initCart = initCart;
+        vm.getCurrentAccount = getCurrentAccount;
         vm.test = 1;
 
         function indexOfCart(lstProduct, product) {
@@ -53,6 +54,10 @@
                 }
                 cart.totalPrice = totalPrice;
             }
+        }
+
+        function getCurrentAccount(){
+            return $sessionStorage.user;
         }
     }
 })();

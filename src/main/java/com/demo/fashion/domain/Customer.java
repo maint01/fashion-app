@@ -42,6 +42,12 @@ public class Customer implements Serializable {
     @Column(name = "customer_type")
     private String customerType;
 
+    @Column(name = "user_name")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -118,6 +124,32 @@ public class Customer implements Serializable {
 
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Customer username(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Customer password(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Orders> getOrders() {

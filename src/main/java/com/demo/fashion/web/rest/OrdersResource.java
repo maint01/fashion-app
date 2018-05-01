@@ -2,6 +2,8 @@ package com.demo.fashion.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.demo.fashion.domain.Orders;
+import com.demo.fashion.security.SecurityUtils;
+import com.demo.fashion.service.CustomerService;
 import com.demo.fashion.service.OrdersService;
 import com.demo.fashion.service.dto.OrdersDTO;
 import com.demo.fashion.web.rest.util.HeaderUtil;
@@ -11,6 +13,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +40,9 @@ public class OrdersResource {
     private static final String ENTITY_NAME = "orders";
 
     private final OrdersService ordersService;
+
+    @Autowired
+    private CustomerService customerService;
 
     public OrdersResource(OrdersService ordersService) {
         this.ordersService = ordersService;
@@ -139,6 +146,18 @@ public class OrdersResource {
         log.debug("REST request to delete Orders : {}", id);
         ordersService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @RequestMapping(value = "/site/get-ordered",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity getOrdersForCustomer() {
+        log.debug("REST request to get list Ordered");
+        String username = SecurityUtils.getCurrentUserLogin();
+        return customerService.findOneByUsername(username)
+            .map(customer -> new ResponseEntity<>(ordersService.getOrdersByCustomer(customer), HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
 }

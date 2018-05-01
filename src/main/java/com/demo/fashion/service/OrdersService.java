@@ -1,5 +1,6 @@
 package com.demo.fashion.service;
 
+import com.demo.fashion.domain.Customer;
 import com.demo.fashion.domain.Orders;
 import com.demo.fashion.service.dto.OrdersDTO;
 import org.springframework.data.domain.Page;
@@ -43,4 +44,6 @@ public interface OrdersService {
     void delete(Long id);
 
     OrdersDTO searchOrder(String codeOrder);
+
+    List<OrdersDTO> getOrdersByCustomer(Customer customer);
 }

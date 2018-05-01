@@ -1,5 +1,6 @@
 package com.demo.fashion.service.impl;
 
+import com.demo.fashion.domain.Customer;
 import com.demo.fashion.repository.CodPaymentRepository;
 import com.demo.fashion.repository.OrderProductRepository;
 import com.demo.fashion.service.CodPaymentService;
@@ -17,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -101,13 +103,27 @@ public class OrdersServiceImpl implements OrdersService {
             if (orders != null) {
                 orders.setLstCodPayment(codPaymentRepository.findByOrders(orders));
                 orders.setLstOrderProduct(orderProductRepository.findByOrders(orders));
-                return this.toDTO(orders);
+                return toDTO(orders);
             }else{
                 return null;
             }
         } else {
             return null;
         }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrdersDTO> getOrdersByCustomer(Customer customer) {
+        log.debug("Request to get Orders by Customer: {}", customer);
+            List<Orders> lstOrder = ordersRepository.findByCustomer(customer);
+            List<OrdersDTO> lstOrderDTO = new ArrayList<>();
+            lstOrder.forEach(orders->{
+                orders.setLstCodPayment(codPaymentRepository.findByOrders(orders));
+                orders.setLstOrderProduct(orderProductRepository.findByOrders(orders));
+                lstOrderDTO.add(toDTO(orders));
+            });
+            return lstOrderDTO;
     }
 
     private OrdersDTO toDTO(Orders orders){

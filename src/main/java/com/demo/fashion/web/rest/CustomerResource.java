@@ -2,6 +2,7 @@ package com.demo.fashion.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.demo.fashion.domain.Customer;
+import com.demo.fashion.security.SecurityUtils;
 import com.demo.fashion.service.CustomerService;
 import com.demo.fashion.web.rest.util.HeaderUtil;
 import com.demo.fashion.web.rest.util.PaginationUtil;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +34,7 @@ public class CustomerResource {
     private final Logger log = LoggerFactory.getLogger(CustomerResource.class);
 
     private static final String ENTITY_NAME = "customer";
-        
+
     private final CustomerService customerService;
 
     public CustomerResource(CustomerService customerService) {
@@ -124,4 +126,50 @@ public class CustomerResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @RequestMapping(value = "/site/register",
+        method = RequestMethod.POST,
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
+    @Timed
+    public ResponseEntity register(@Valid @RequestBody Customer customer) throws URISyntaxException {
+        log.debug("REST request to Customer register : {}", customer);
+        HttpHeaders textPlainHeaders = new HttpHeaders();
+        textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
+
+        return customerService.findOneByUsername(customer.getUsername())
+            .map(cust -> new ResponseEntity<>("USERNAME_EXIST", textPlainHeaders, HttpStatus.BAD_REQUEST))
+            .orElseGet(() -> customerService.findOneByEmailAndUsernameIsNotNull(customer.getEmail())
+                .map(cust -> new ResponseEntity<>("EMAIL_EXIST", textPlainHeaders, HttpStatus.BAD_REQUEST))
+                .orElseGet(() -> {
+                    Customer customerResult = customerService.save(customer);
+                    if (customerResult == null) {
+                        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                    } else {
+                        return new ResponseEntity<>(HttpStatus.CREATED);
+                    }
+                })
+            );
+    }
+
+    @RequestMapping(value = "/site/get-profile",
+        method = RequestMethod.GET,
+        produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Timed
+    public ResponseEntity getProfile() throws URISyntaxException {
+        log.debug("REST request to get Customer profile.");
+        String username = SecurityUtils.getCurrentUserLogin();
+        return customerService.findOneByUsername(username)
+            .map(cust -> new ResponseEntity<>(cust, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @RequestMapping(value = "/site/change-password",
+        method = RequestMethod.POST,
+        produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Timed
+    public ResponseEntity changePassword(@RequestBody String newPassword)
+        throws URISyntaxException {
+        log.debug("REST request to get Customer change password to {}", newPassword);
+        boolean result = customerService.changePassword(newPassword);
+        return result ? new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

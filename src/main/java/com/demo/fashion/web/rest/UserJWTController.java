@@ -2,6 +2,7 @@ package com.demo.fashion.web.rest;
 
 import com.demo.fashion.security.jwt.JWTConfigurer;
 import com.demo.fashion.security.jwt.TokenProvider;
+import com.demo.fashion.service.CustomerService;
 import com.demo.fashion.web.rest.vm.LoginVM;
 
 import com.codahale.metrics.annotation.Timed;
@@ -9,10 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.jaas.JaasAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +39,9 @@ public class UserJWTController {
 
     private final AuthenticationManager authenticationManager;
 
+    @Autowired
+    private CustomerService customerService;
+
     public UserJWTController(TokenProvider tokenProvider, AuthenticationManager authenticationManager) {
         this.tokenProvider = tokenProvider;
         this.authenticationManager = authenticationManager;
@@ -49,6 +56,25 @@ public class UserJWTController {
 
         try {
             Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
+            String jwt = tokenProvider.createToken(authentication, rememberMe);
+            response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
+            return ResponseEntity.ok(new JWTToken(jwt));
+        } catch (AuthenticationException ae) {
+            log.trace("Authentication exception trace: {}", ae);
+            return new ResponseEntity<>(Collections.singletonMap("AuthenticationException",
+                ae.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @RequestMapping(value = "/site-authenticate",
+    method = RequestMethod.POST,
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity siteAuthorize(@Valid @RequestBody LoginVM loginVM, HttpServletResponse response) {
+        try {
+            Authentication authentication = customerService.authenticate(loginVM.getUsername(), loginVM.getPassword());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
             String jwt = tokenProvider.createToken(authentication, rememberMe);

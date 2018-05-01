@@ -21,7 +21,7 @@
             "account": {
                 "main": "Tài khoản",
                 "settings": "Cài đặt",
-                "password": "Mật khẩu",
+                "password": "Đổi mật khẩu",
                 "sessions": "Phiên đăng nhập",
                 "login": "Đăng nhập",
                 "logout": "Đăng xuất",

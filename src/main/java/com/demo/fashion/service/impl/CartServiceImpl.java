@@ -5,6 +5,7 @@ import com.demo.fashion.repository.CodPaymentRepository;
 import com.demo.fashion.repository.OrderProductRepository;
 import com.demo.fashion.repository.OrdersRepository;
 import com.demo.fashion.repository.ProductRepository;
+import com.demo.fashion.security.SecurityUtils;
 import com.demo.fashion.service.CartService;
 import com.demo.fashion.service.CustomerService;
 import com.demo.fashion.service.util.CartConstants;
@@ -49,10 +50,18 @@ public class CartServiceImpl implements CartService {
     @Override
     public Long saveCart(CartVM cartVM) {
         log.info("Request to save cart.");
-        //save customer
-        Customer customer = cartVM.getCustomer();
-        customer.setCustomerType(CartConstants.CUSTOMER_ANONYMOUS);
-        customer = customerService.save(cartVM.getCustomer());
+        String username = SecurityUtils.getCurrentUserLogin();
+        Customer customer;
+        if (username != null) {
+            customer = customerService.findOneByUsername(username)
+                .map(cust -> cust)
+                .orElse(null);
+        } else {
+            //save customer
+            customer = cartVM.getCustomer();
+            customer.setCustomerType(CartConstants.CUSTOMER_ANONYMOUS);
+            customer = customerService.save(cartVM.getCustomer());
+        }
         //save orders
         Orders orders = new Orders()
             .timeCreated(ZonedDateTime.now())

@@ -12,10 +12,10 @@
                 <!--<span data-translate="global.title">Fashion</span> <span class="navbar-version">v{{VERSION}}</span>-->
             </a>
         </div>
-        <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed">
+        <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated">
             <ul class="nav navbar-nav navbar-right">
                 <li ui-sref-active="active" uib-dropdown class="dropdown pointer">
-                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="cart-menu">
                         <span>
                             <span class="glyphicon glyphicon-shopping-cart"></span>
                             <span class="hidden-sm">
@@ -35,6 +35,58 @@
                             <a ui-sref="search-order" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-search"></span>&nbsp;
                                 <span>Search Order</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu" ng-switch-when="false">
+                        <span>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-sm" data-translate="global.menu.account.main">
+                                Account
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-switch-when="true">
+                        <span>
+                            <img src="content/images/image-profile-default.png" class="img-responsive img-circle img-profile">
+                            <span class="hidden-sm">
+                               {{vm.account.fullName}}
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="settings" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;
+                                <span data-translate="global.menu.account.settings">Settings</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="change-password" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
+                                <span data-translate="global.menu.account.password">Change password</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a href="" ng-click="vm.logout()" id="logout">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;
+                                <span data-translate="global.menu.account.logout">Sign out</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="false">
+                            <a ui-sref="login" id="login">
+                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
+                                <span data-translate="global.menu.account.login">Sign in</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="false">
+                            <a ui-sref="register" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                                <span data-translate="global.menu.account.register">Register</span>
                             </a>
                         </li>
                     </ul>

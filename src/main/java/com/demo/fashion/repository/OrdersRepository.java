@@ -1,5 +1,6 @@
 package com.demo.fashion.repository;
 
+import com.demo.fashion.domain.Customer;
 import com.demo.fashion.domain.Orders;
 
 import org.springframework.data.jpa.repository.*;
@@ -12,4 +13,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface OrdersRepository extends JpaRepository<Orders,Long> {
 
+    List<Orders> findByCustomer(Customer customer);
 }

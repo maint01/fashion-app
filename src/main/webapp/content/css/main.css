@@ -460,3 +460,9 @@ ui bootstrap tweaks
 tr.no-wrap-text > th {
     white-space: nowrap;
 }
+
+.img-profile {
+    width: 20px;
+    height: 20px;
+    display: inline;
+}
