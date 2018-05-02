@@ -23,7 +23,7 @@
                 vm.cart = data;
                 var totalAmount = 0;
                 vm.cart.lstOrderProduct.forEach(function (item) {
-                    totalAmount += item.product.currentSale + item.quantity;
+                    totalAmount += item.product.currentSale * item.quantity;
                 });
                 vm.cart.totalAmount = totalAmount;
             }, function (error) {

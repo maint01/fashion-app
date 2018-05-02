@@ -15,10 +15,10 @@
             "detail": {
                 "title": "Orders"
             },
-            "timeCreated": "Time Created",
-            "status": "Status",
+            "timeCreated": "Thời gian đặt hàng",
+            "status": "Trạng thái",
             "payCategory": "Pay Category",
-            "customer": "Customer",
+            "customer": "Khách hàng",
             "codPayment": "Cod Payment",
             "orderProduct": "Order Product"
         }

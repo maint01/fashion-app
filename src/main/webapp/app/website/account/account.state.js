@@ -149,6 +149,81 @@
                     ]);
                 }]
             }
+        }).state('history-orders', {
+            parent: 'site',
+            url: '/history-orders',
+            data: {
+                authorities: ['ROLE_WEBSITE'],
+                pageTitle: 'global.menu.account.historyOrders'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/website/account/history-orders/history-orders.html',
+                    controller: 'HistoryOrdersController',
+                    controllerAs: 'vm'
+                }
+            },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('site');
+                    $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('orders');
+                    return $translate.refresh();
+                }],
+                lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/website/account/history-orders/history-orders.controller.js',
+                        'app/website/account/account.service.js'
+                    ]);
+                }]
+            }
+        }).state('order-detail', {
+            parent: 'history-orders',
+            url: '/detail/{codeOrder}',
+            data: {
+                authorities: ['ROLE_WEBSITE'],
+                pageTitle: 'global.menu.orders.detail'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/website/account/history-orders/history-order.detail.html',
+                    controller: 'OrderDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('site');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }],
+                lazyLoad: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/website/account/history-orders/history-order.detail.controller.js',
+                        'app/website/account/account.service.js'
+                    ]);
+                }]
+            }
         });
     }
 })();

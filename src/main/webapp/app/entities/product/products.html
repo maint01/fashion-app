@@ -41,7 +41,7 @@
                     <td>{{product.price|money}}</td>
                     <td>{{product.currentSale|money}}</td>
                     <td>{{product.quantity}}</td>
-                    <td>{{product.fullTextPost}}</td>
+                    <td class="text-read-more"><span>{{product.fullTextPost}}</span></td>
                     <td>{{product.timeCreated | date:'medium'}}</td>
                     <td>
                         <a ui-sref="category-detail({id:product.category.id})">{{product.category.name}}</a>

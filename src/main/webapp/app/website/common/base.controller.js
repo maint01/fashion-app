@@ -53,6 +53,9 @@
                     totalPrice += cart.lstProduct[i].currentSale * cart.lstQuantity[i];
                 }
                 cart.totalPrice = totalPrice;
+                if ($sessionStorage.user !== undefined || $sessionStorage.user !== undefined) {
+                    cart.customer = $sessionStorage.user || $sessionStorage.user;
+                }
             }
         }
 

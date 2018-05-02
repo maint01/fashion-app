@@ -45,5 +45,5 @@ public interface OrdersService {
 
     OrdersDTO searchOrder(String codeOrder);
 
-    List<OrdersDTO> getOrdersByCustomer(Customer customer);
+    Page<OrdersDTO> getOrdersByCustomer(Customer customer, Pageable pageable);
 }

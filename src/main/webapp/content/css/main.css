@@ -2,6 +2,14 @@ body {
     /*background: #fafafa;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    min-height:100%; padding:0; margin:0; position:relative;
+}
+
+body::after{ content:''; display:block; height:100px; }
+
+html {
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -465,4 +473,19 @@ tr.no-wrap-text > th {
     width: 20px;
     height: 20px;
     display: inline;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    background-color: #dcdcdc;
+    width:100%;
+    height:100px;
+}
+
+.text-read-more{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px;
+    text-overflow: ellipsis;
 }

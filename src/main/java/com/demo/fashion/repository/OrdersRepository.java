@@ -3,6 +3,8 @@ package com.demo.fashion.repository;
 import com.demo.fashion.domain.Customer;
 import com.demo.fashion.domain.Orders;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -13,5 +15,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface OrdersRepository extends JpaRepository<Orders,Long> {
 
-    List<Orders> findByCustomer(Customer customer);
+    Page<Orders> findByCustomer(Customer customer, Pageable pageable);
 }

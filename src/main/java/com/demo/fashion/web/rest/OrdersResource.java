@@ -148,15 +148,19 @@ public class OrdersResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
-    @RequestMapping(value = "/site/get-ordered",
+    @RequestMapping(value = "/site/get-history-orders",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity getOrdersForCustomer() {
+    public ResponseEntity getOrdersForCustomer(@ApiParam Pageable pageable) {
         log.debug("REST request to get list Ordered");
         String username = SecurityUtils.getCurrentUserLogin();
         return customerService.findOneByUsername(username)
-            .map(customer -> new ResponseEntity<>(ordersService.getOrdersByCustomer(customer), HttpStatus.OK))
+            .map(customer -> {
+                Page<OrdersDTO> page = ordersService.getOrdersByCustomer(customer, pageable);
+                HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "");
+                return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+            })
             .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 

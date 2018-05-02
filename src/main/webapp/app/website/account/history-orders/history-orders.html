@@ -1,0 +1,39 @@
+<div class="container">
+    <h2 data-translate="fashionApp.orders.home.title">Orders</h2>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="site.order.dateOrder"></span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="fashionApp.orders.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="site.order.dateDelivery">Ngày giao hàng</span><span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="orders in vm.orders track by $index">
+                <td>{{orders.id}}</a></td>
+                <td>{{orders.timeCreated | date:'dd/MM/yyyy'}}</td>
+                <td>{{orders.status|statusOrder}}</td>
+                <td>{{orders.lstCodPayment[0].shipDate | date: 'dd/MM/yyyy'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="order-detail({codeOrder:orders.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

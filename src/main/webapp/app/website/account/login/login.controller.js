@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     LoginController.$inject = ['$rootScope', '$state', '$timeout', 'AccountService', 'previousState', '$localStorage', '$sessionStorage'];
 
-    function LoginController ($rootScope, $state, $timeout, AccountService, previousState, $localStorage, $sessionStorage) {
+    function LoginController($rootScope, $state, $timeout, AccountService, previousState, $localStorage, $sessionStorage) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -20,9 +20,11 @@
         vm.requestResetPassword = requestResetPassword;
         vm.username = null;
 
-        $timeout(function (){angular.element('#username').focus();});
+        $timeout(function () {
+            angular.element('#username').focus();
+        });
 
-        function cancel () {
+        function cancel() {
             vm.credentials = {
                 username: null,
                 password: null,
@@ -31,7 +33,7 @@
             vm.authenticationError = false;
         }
 
-        function login (event) {
+        function login(event) {
             event.preventDefault();
             AccountService.login({
                 username: vm.username,
@@ -40,21 +42,18 @@
             }).$promise.then(function (data) {
                 var jwt = data.id_token;
                 if (angular.isDefined(jwt)) {
-                    if(vm.rememberMe){
+                    if (vm.rememberMe) {
                         $localStorage.siteToken = jwt;
-                    }else{
+                    } else {
                         $sessionStorage.siteToken = jwt;
                     }
                 }
                 vm.authenticationError = false;
-                if ($state.current.name === 'register' || $state.current.name === 'activate' ||
-                    $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
-                    $state.go('home');
-                }
-
                 $rootScope.$broadcast('authenticationSuccess');
-
-                if (previousState) {
+                if (previousState.name === 'register' || previousState.name === 'finishReset'
+                    || previousState.name === 'requestReset' || previousState.name === 'change-password') {
+                    $state.go('home');
+                } else {
                     $state.go(previousState.name, previousState.params);
                 }
             }).catch(function () {
@@ -62,11 +61,11 @@
             });
         }
 
-        function register () {
+        function register() {
             $state.go('register');
         }
 
-        function requestResetPassword () {
+        function requestResetPassword() {
             $state.go('requestReset');
         }
     }

@@ -39,6 +39,10 @@
             "":""
         },
         "delivery": {
+            "customerName": "Tên khách hàng",
+            "email": "Email",
+            "address": "Địa chỉ",
+            "phone": "Điện thoại",
             "success": "Đặt hàng thành công. Cảm ơn quí khác đã tham gia mua hàng tại website!"
         },
         "order": {
@@ -47,7 +51,9 @@
                 "cancel": "Đã hủy",
                 "delivery": "Đang vận chuyển",
                 "closed": "Đã đóng"
-            }
+            },
+            "dateOrder": "Ngày mua hàng",
+            "dateDelivery": "Dự kiến giao hàng ngày"
         }
     }
 }

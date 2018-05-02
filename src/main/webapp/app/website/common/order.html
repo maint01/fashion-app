@@ -1,36 +1,36 @@
 <div ng-if="vm.cart !== null">
     <div class="basic-info">
-        <span>Thông tin đơn hàng</span>&nbsp;
-        <strong>{{vm.cart.id}}</strong>
+        <span translate="site.cart.orderInfo">Thông tin đơn hàng</span>&nbsp;
+        <strong>#{{vm.cart.id}}</strong>
     </div>
     <div>
         <div class="col-md-6">
             <div class="pad">
                 <div class="form-group row">
-                    <label class="control-label text-normal col-sm-4">Tên khách hàng: </label>
+                    <label class="control-label text-normal col-sm-4" translate="site.delivery.customerName">Tên khách hàng </label>
                     <span>{{vm.cart.customer.fullName}}</span>
                 </div>
                 <div class="form-group row">
-                    <label class="control-label text-normal col-sm-4">Email</label>
+                    <label class="control-label text-normal col-sm-4" translate="site.delivery.email">Email</label>
                     <span>{{vm.cart.customer.email}}</span>
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label text-normal col-sm-4">Địa chỉ</label>
+                    <label class="control-label text-normal col-sm-4" translate="site.delivery.address">Địa chỉ</label>
                     <span>{{vm.cart.customer.address}}</span>
                 </div>
                 <div class="form-group row">
-                    <label class="control-label text-normal col-sm-4">Điện thoại</label>
+                    <label class="control-label text-normal col-sm-4" translate="site.delivery.address">Điện thoại</label>
                     <span>{{vm.cart.customer.phone}}</span>
                 </div>
             </div>
             <div style="padding: 0 10px">
                 <div>
                     <input type="radio" checked="true" disabled/>
-                    <span>Thanh toán khi nhận hàng</span>
+                    <span translate="site.cart.postPaid">Thanh toán khi nhận hàng</span>
                 </div>
                 <div>
-                        <span style="color: #a09a9a">(*)Lưu ý thời gian giao hàng phụ thuộc vào thời gian Gian hàng xử lý đơn, có thể chậm hơn thông
+                        <span style="color: #a09a9a" translate="site.cart.noteTransfer">(*)Lưu ý thời gian giao hàng phụ thuộc vào thời gian Gian hàng xử lý đơn, có thể chậm hơn thông
                         báo tối đa 24h.</span>
                 </div>
             </div>
@@ -40,10 +40,10 @@
              ng-if="vm.cart.lstOrderProduct.length > 0">
             <table class="table table-hover">
                 <thead>
-                <th>Sản phẩm</th>
-                <th>Tên</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
+                <th translate="site.cart.product">Sản phẩm</th>
+                <th translate="site.cart.name">Tên</th>
+                <th translate="site.cart.price">Giá</th>
+                <th translate="site.cart.quantity">Số lượng</th>
                 </thead>
                 <tbody>
                 <tr ng-repeat="orderDetail in vm.cart.lstOrderProduct track by $index">
@@ -87,7 +87,7 @@
                 </tr>
                 <tr class="hidden-xs">
                     <td colspan="2">
-                        <span>Ngày mua hàng</span>
+                        <span translate="site.order.dateOrder">Ngày mua hàng</span>
                     </td>
                     <td colspan="2">
                         <span class="pull-right">{{vm.cart.timeCreated | date: 'dd/MM/yyyy'}}</span>
@@ -95,7 +95,7 @@
                 </tr>
                 <tr class="hidden-xs">
                     <td colspan="2">
-                        <span>Dự kiến giao hàng ngày</span>
+                        <span translate="site.order.dateDelivery">Dự kiến giao hàng ngày</span>
                     </td>
                     <td colspan="2">
                         <span class="pull-right">{{vm.cart.lstCodPayment[0].shipDate | date: 'dd/MM/yyyy'}}</span>

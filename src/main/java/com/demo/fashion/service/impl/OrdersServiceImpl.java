@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -114,16 +115,16 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<OrdersDTO> getOrdersByCustomer(Customer customer) {
+    public Page<OrdersDTO> getOrdersByCustomer(Customer customer, Pageable pageable) {
         log.debug("Request to get Orders by Customer: {}", customer);
-            List<Orders> lstOrder = ordersRepository.findByCustomer(customer);
+            Page<Orders> lstOrder = ordersRepository.findByCustomer(customer, pageable);
             List<OrdersDTO> lstOrderDTO = new ArrayList<>();
             lstOrder.forEach(orders->{
                 orders.setLstCodPayment(codPaymentRepository.findByOrders(orders));
                 orders.setLstOrderProduct(orderProductRepository.findByOrders(orders));
                 lstOrderDTO.add(toDTO(orders));
             });
-            return lstOrderDTO;
+            return new PageImpl<>(lstOrderDTO, pageable, lstOrderDTO.size());
     }
 
     private OrdersDTO toDTO(Orders orders){

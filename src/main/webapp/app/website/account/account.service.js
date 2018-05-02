@@ -28,6 +28,15 @@
             changeProfile:{
                 method: 'POST',
                 url: '/api/site/change-profile'
+            },
+            loadHistoryOrders: {
+                method: 'GET',
+                url: '/api/site/get-history-orders',
+                isArray: true
+            },
+            getOrder: {
+                method: 'GET',
+                url: '/api/search-order/:codeOrder'
             }
         });
 
