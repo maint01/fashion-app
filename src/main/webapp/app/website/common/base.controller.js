@@ -50,7 +50,7 @@
             if (cart !== undefined && cart.lstProduct !== undefined) {
                 var totalPrice = 0;
                 for (var i = 0; i < cart.lstProduct.length; i++) {
-                    totalPrice += cart.lstProduct[i].currentSale * cart.lstQuantity[i];
+                    totalPrice += cart.lstProduct[i].price * cart.lstQuantity[i];
                 }
                 cart.totalPrice = totalPrice;
                 if ($sessionStorage.user !== undefined || $sessionStorage.user !== undefined) {

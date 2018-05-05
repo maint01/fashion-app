@@ -9,7 +9,7 @@
         return function (input) {
             var numberFilter = $filter('number');
             var filteredInput = numberFilter(input, 0);
-            if(filteredInput !== undefined){
+            if(filteredInput !== undefined && filteredInput !== null){
                 return filteredInput.toString().replace(/,/g, ".") + ' VNĐ';
             }else{
                 return '';
